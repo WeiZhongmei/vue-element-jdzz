@@ -1,0 +1,15 @@
+@import "./element-theme-vars.scss";
+
+$cl-b: #303133;
+$cl-w: #ffffff;
+$cl-g: #f0f2f5;
+$cl-lb: #606266;
+
+$bg-b: #303133;
+$bg-w: #fff;
+$base-color: #11A0AD;
+$base-32: #323233;
+
+@function primaryRGBA($a: 1) {
+  @return rgba(0, 110, 251, $a);
+}

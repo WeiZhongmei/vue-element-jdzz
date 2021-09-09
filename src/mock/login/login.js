@@ -18,18 +18,20 @@ Mock.mock('/login', 'post', (req) => {
     let curUser = user.filter(u => u.username === username);
     if (curUser.length) {
         if (curUser[0].password === password) {
-            return '登陆成功！'
+            return {
+                code: 2000,
+                msg: '登陆成功！'
+            }
         } else {
-            return '密码错误，请重新登陆！'
+            return {
+                code: 2001,
+                msg: '密码错误，请重新登陆！'
+            }
         }
     } else {
-        return '当前用户不存在！'
-    }
-})
-
-Mock.mock('/test', 'get', () => {
-    return {
-        user,
-        code: 2000
+        return {
+            code: 2001,
+            msg: '当前用户不存在！'
+        }
     }
 })

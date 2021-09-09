@@ -14,7 +14,7 @@ const constantRoutes = [
 const dynamicRoutes = [
     {
         path: '/',
-        name: '首页',
+        name: '/',
         redirect: '/login'
     },
     {

@@ -1,7 +1,6 @@
 import axios from "axios";
 import requestUrl from '../base';
 import apiConfig from '../apiConfig/index';
-console.log('requestUrl', requestUrl);
 
 // 创建一个请求实例并配置请求的基础配置
 const defineRest = axios.create({
@@ -37,10 +36,11 @@ function rest (api, param = {}, data= {}, options) {
         // ops.headers = localStorage.getItem("token");
        
         restHandler(ops).then(res => {
-            if (res.code == 2000) {
+            if (res.data.code == 2000) {
                 resolve(res);
             } else {
                 // 异常处理
+                this.alertError(res.data.msg)
                 reject(res);
             }
         })
@@ -60,11 +60,9 @@ function restHandler (ops) {
         }
 
         // 调用请求实例发送请求
-        console.log('restOptions', restOptions);
         defineRest(restOptions).then(res => {
             resolve(res);
         }).catch(err => {
-            console.log(111, err);
             // 请求异常处理（浏览器部分）
             if (err.response) {
                 console.log('错误处理');
